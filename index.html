@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Твой Тренер</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0a;
+      color: #e8e8e8;
+      line-height: 1.7;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    .main-header {
+      background: linear-gradient(135deg, #1a0f0f, #2a1818);
+      padding: 15px 0;
+      text-align: center;
+      border-bottom: 1px solid #4a2a2a;
+    }
+    .logo {
+      font-size: 2em;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffd700, #ffed4a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 80px 0 60px;
+      background: linear-gradient(180deg, rgba(10,10,10,0.9), rgba(25,15,15,0.8));
+    }
+    .profile-img {
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      background: linear-gradient(45deg, #8b0000, #a52a2a) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      margin: 0 auto 30px;
+      box-shadow: 0 25px 60px rgba(139,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+    .profile-img:hover { transform: scale(1.05); }
+
+    h1 {
+      font-size: 3.2em; font-weight: 700;
+      background: linear-gradient(135deg, #e8e8e8, #d4d4d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+    .directions {
+      font-size: 1.3em;
+      color: #a8a8a8;
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+    .education {
+      background: linear-gradient(135deg, rgba(90,30,30,0.4), rgba(122,46,46,0.3));
+      border: 1px solid #8b0000;
+      padding: 20px 30px;
+      border-radius: 15px;
+      margin: 30px 0;
+      font-size: 1.1em;
+      color: #ffd700;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #2a1818, #4a2a2a);
+      padding: 35px;
+      border-radius: 20px;
+      margin: 40px 0;
+      border: 1px solid #8b0000;
+      box-shadow: 0 20px 50px rgba(139,0,0,0.3);
+    }
+    .cta-title {
+      font-size: 1.6em;
+      font-weight: 600;
+      margin-bottom: 25px;
+      color: #ffd700;
+    }
+    .cta-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .phone {
+      font-size: 1.4em;
+      font-weight: 600;
+      color: #e8e8e8;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .social-buttons { display: flex; gap: 15px; }
+    .social-btn {
+      width: 55px; height: 55px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: 1.3em;
+      transition: all 0.3s ease;
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .telegram { background: linear-gradient(135deg, #0088cc, #00aaff); }
+    .vk { background: linear-gradient(135deg, #4c75a3, #587ca3); }
+    .instagram { background: linear-gradient(135deg, #e4405f, #f77737); }
+    .social-btn:hover {
+      transform: scale(1.15) translateY(-3px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid #2a1a1a;
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section h2 {
+      font-size: 2.4em; font-weight: 600;
+      background: linear-gradient(135deg, #ffd700, #ffed4a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 25px;
+    }
+
+    .section-subtitle {
+      font-size: 1.2em;
+      color: #a8a8a8;
+      margin-bottom: 35px;
+      font-weight: 500;
+    }
+
+    .features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px; margin-top: 40px;
+    }
+    .feature-card {
+      background: linear-gradient(145deg, rgba(20,10,10,0.9), rgba(30,15,15,0.8));
+      border: 1px solid rgba(139,0,0,0.4);
+      padding: 40px; border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    .feature-card:hover {
+      background: linear-gradient(145deg, rgba(35,20,20,0.95), rgba(45,25,25,0.9));
+      transform: translateY(-10px);
+      box-shadow: 0 30px 70px rgba(139,0,0,0.4);
+    }
+    .feature-icon {
+      font-size: 3em;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffd700, #ffed4a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .feature-title {
+      font-size: 1.4em;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #e8e8e8;
+    }
+
+    .kms-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px; margin-top: 40px;
+    }
+    .kms-badge {
+      background: linear-gradient(135deg, #5a1e1e, #7a2e2e);
+      color: #ffd700; padding: 20px 25px;
+      border-radius: 15px; text-align: center;
+      font-weight: 700; font-size: 1.15em;
+      border: 2px solid #8b0000;
+      transition: all 0.3s ease;
+    }
+    .kms-badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 50px rgba(139,0,0,0.6);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.5em; }
+      .profile-img { width: 160px; height: 160px; }
+      .cta-content { flex-direction: column; gap: 25px; text-align: center; }
+      .features { grid-template-columns: 1fr; }
+      .kms-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<header class="main-header">
+  <div class="container">
+    <div class="logo">ТВОЙ ТРЕНЕР</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop&crop=face" alt="Тренер" class="profile-img">
+    <h1>ТВОЙ ТРЕНЕР</h1>
+    <p class="directions">Тренажёрный зал • Пауэрлифтинг КМС • Бокс • Борьба</p>
+
+    <!-- Образование IUFAS -->
+    <div class="education">
+      <i class="fas fa-graduation-cap" style="color: #ffd700; margin-right: 10px;"></i>
+      <strong>IUFAS</strong> • Высшее спортивное образование по специальности "Фитнес и спортивная физиология"
+    </div>
+
+    <!-- Запись на тренировки -->
+    <div class="cta-section">
+      <h3 class="cta-title"><i class="fas fa-phone"></i> Запись на тренировки</h3>
+      <div class="cta-content">
+        <div class="phone">
+          <i class="fas fa-mobile-alt"></i>
+          +7 (999) 123-45-67
+        </div>
+        <div class="social-buttons">
+          <a href="https://t.me/yourchannel" class="social-btn telegram" title="Telegram">
+            <i class="fab fa-telegram-plane"></i>
+          </a>
+          <a href="https://vk.com/yourpage" class="social-btn vk" title="VK">
+            <i class="fab fa-vk"></i>
+          </a>
+          <a href="https://instagram.com/yourprofile" class="social-btn instagram" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <!-- Тренажёрный зал - РАСПISАНО ПОДРОБНО -->
+  <section class="section">
+    <h2>🏋️ Тренажёрный зал</h2>
+    <p class="section-subtitle">5 лет профессионального опыта • 100+ постоянных клиентов</p>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Индивидуальные программы тренировок</div>
+        <p>Разработка персональных тренировочных циклов с учетом ваших целей, уровня подготовки и биомеханических особенностей. Построение долгосрочной прогрессии нагрузок с точным расчетом рабочих весов и периодов восстановления.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🍽️</div>
+        <div class="feature-title">Питание и рацион</div>
+        <p>Расчет точных макронутриентов (БЖУ) под ваши цели — набор массы, сушка, поддержание формы. Контроль калорийности и составление полноценных рационов на каждый день с учетом графика и предпочтений.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🥇</div>
+        <div class="feature-title">Подготовка к соревнованиям</div>
+        <p>Полный цикл подготовки от базовой фазы до соревновательной пиковой формы. Работа с периодизацией, разгрузками, пирамидой нагрузок. Результат — 100+ клиентов достигли своих целей.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Пауэрлифтинг КМС -->
+  <section class="section">
+    <h2>🥇 Пауэрлифтинг • КМС</h2>
+    <p class="section-subtitle">Кандидат в мастера спорта по всем трем движениям • Активный спортсмен</p>
+    <div class="kms-grid">
+      <div class="kms-badge">
+        <div style="font-size: 1.4em;">🏅</div>
+        <div>Жим лежа</div>
+      </div>
+      <div class="kms-badge">
+        <div style="font-size: 1.4em;">🏅</div>
+        <div>Становая тяга</div>
+      </div>
+      <div class="kms-badge">
+        <div style="font-size: 1.4em;">🏅</div>
+        <div>Приседания</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Бокс и Борьба -->
+  <section class="section">
+    <h2>🥊 Бокс • Борьба</h2>
+    <p class="section-subtitle">3 года интенсивных тренировок • 50+ клиентов по единоборствам</p>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">👊</div>
+        <div class="feature-title">Бокс — техника боя</div>
+        <p>Правильная боксерская стойка, работа на ногах, комбинации ударов, защита и контратаки. Построение выносливости бойца и силовых качеств для полноценных спаррингов.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤼</div>
+        <div class="feature-title">Борьба — партер и стойка</div>
+        <p>Тейкдауны, контроль в партере, выходы из удержаний, болевые приемы. Комплексная подготовка функциональной силы и выносливости для смешанных единоборств.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Удобная запись</div>
+        <p>Telegram-бот для быстрой записи на тренировки, отслеживания прогресса и получения рекомендаций. Работает 24/7 для всех моих клиентов.</p>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
